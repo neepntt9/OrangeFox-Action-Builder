@@ -20,7 +20,7 @@ on:
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
-        default: 'https://github.com/cd-Crypton/custom_recovery_tree_realme_nashc'
+        default: 'https://github.com/neepntt9/android_device_samsung_m14x'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true
@@ -28,11 +28,11 @@ on:
       DEVICE_PATH:
         description: 'Specify your Device Path'
         required: true
-        default: 'device/realme/nashc'
+        default: 'device/samsung/m14x'
       DEVICE_NAME:
         description: 'Specify your Device Codename'
         required: true
-        default: 'nashc'
+        default: 'm14x'
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
@@ -94,6 +94,43 @@ jobs:
         set +e
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
+        export ALLOW_MISSING_DEPENDENCIES=true
+        export OF_QUICK_BACKUP_LIST="/data;/storage;/boot;/system;/vendor;/persist;/efs;/cache;"
+        OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+        FOX_PATCH_VBMETA_FLAG=1
+        export OF_QUICK_BACKUP_LIST_DEFAULT=1
+        export OF_PATCH_AVB20=1
+        export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+        export FOX_PATCH_VBMETA_FLAG=1
+        export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
+        export FOX_AB_DEVICE=0
+        export OF_NO_TREBLE_COMPATIBILITY_LIB=1
+        export OF_TREBLE_ENABLED=1
+        export OF_SUPPORTS_DYNAMIC_PARTITIONS=1
+        export OF_USE_GREEN_LED=0
+        export FOX_RECOVERY_INSTALL_PARTITION="/dev/block/bootdevice/by-name/recovery"
+        export FOX_USE_BASH_SHELL=1
+        export FOX_ASH_IS_BASH=1
+        export OF_SUPPORT_MIUI_OTA=0
+        export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
+        export OF_DONT_PATCH_ON_FRESH_INSTALLATION=0
+        export OF_ALLOW_DISABLE_NAVBAR=0
+        export OF_SCREENSHOT=1
+        export OF_FORCE_RO2RW_SYSTEM_ERASE=1
+        export OF_USE_MAGISKBOOT=1
+        export FOX_NO_SAMSUNG_SPECIAL=1
+        export FOX_USE_NANO_EDITOR=1
+        export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+        export FOX_DELETE_ARGS_INFO_ON_INSTALL=1
+        export FOX_USE_USERDATA_ON_FIRST_BOOT=1
+        export FOX_USE_LZ4_BINARY=1
+        export FOX_USE_ZSTD_BINARY=1
+        export FOX_USE_XZ_UTILS=1
+        export FOX_BUILD_BASH=0
+        export FOX_ENABLE_DRAGONTC=0
+        export FOX_PARTITION_INFO=1
+        export FOX_DISABLE_APP_MANAGER=1
+        echo"successFLAGtiRanGA..."
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
 
