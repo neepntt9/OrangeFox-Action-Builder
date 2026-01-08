@@ -54,10 +54,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-              
     - name: Clean-up
       uses: rokibhasansagar/slimhub_actions@main
-
     - name: Swap Space
       uses: pierotofy/set-swap-space@master
       with:
@@ -105,7 +103,7 @@ jobs:
         echo"flags_satisfied"
     - name: Set-up Manifest
     if: inputs.MANIFEST_BRANCH == '11.0' || inputs.MANIFEST_BRANCH == '12.1'
-           run: | 
+     run: |
      mkdir -p ${GITHUB_WORKSPACE}/OrangeFox
         cd ${GITHUB_WORKSPACE}/OrangeFox
         git config --global user.name "${{ github.actor }}"
