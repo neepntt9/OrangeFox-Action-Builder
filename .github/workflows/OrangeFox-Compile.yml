@@ -54,6 +54,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+ 
     - name: Clean-up
       uses: rokibhasansagar/slimhub_actions@main
     - name: Swap Space
@@ -70,9 +71,9 @@ jobs:
         
         
     - name: Set-up Manifest
-    if: inputs.MANIFEST_BRANCH == '11.0' || inputs.MANIFEST_BRANCH == '12.1'
-     run: |
-     mkdir -p ${GITHUB_WORKSPACE}/OrangeFox
+      if: inputs.MANIFEST_BRANCH == '11.0' || inputs.MANIFEST_BRANCH == '12.1'
+      run: |
+       mkdir -p ${GITHUB_WORKSPACE}/OrangeFox
         cd ${GITHUB_WORKSPACE}/OrangeFox
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
@@ -86,7 +87,7 @@ jobs:
         git clone ${{ inputs.DEVICE_TREE }} -b ${{ inputs.DEVICE_TREE_BRANCH }} ./${{ inputs.DEVICE_PATH }}
         cd ${{ inputs.DEVICE_PATH }}
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
-        - name: Building OrangeFox
+       - name: Building OrangeFox
         run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
@@ -128,8 +129,8 @@ jobs:
         
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
-     - name: Set Release Properties
-        run: |
+    - name: Set Release Properties
+      run: |
         echo "BUILD_DATE=$(TZ=Asia/Manila date +%Y%m%d)" >> $GITHUB_ENV
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
 
@@ -138,7 +139,7 @@ jobs:
           DEVICE_TREE_URL="${DEVICE_TREE_URL%.git}"
         fi
         echo "DEVICE_TREE_URL=${DEVICE_TREE_URL}" >> $GITHUB_ENV
-     - name: Upload to Release
+        - name: Upload to Release
         uses: softprops/action-gh-release@v2
         with:
         files: |
