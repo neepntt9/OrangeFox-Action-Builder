@@ -17,6 +17,7 @@ on:
         options:
         - 12.1
         - 11.0
+        - 9.0
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
