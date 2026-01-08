@@ -92,9 +92,9 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
+        
         source build/envsetup.sh
         
-        export OF_QUICK_BACKUP_LIST="/data;/storage;/boot;/system;/vendor;/persist;/efs;/cache;"
         export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
         export FOX_PATCH_VBMETA_FLAG=1
         export OF_QUICK_BACKUP_LIST_DEFAULT=1
