@@ -92,7 +92,6 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
-        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}/${{ inputs.DEVICE_PATH }}
         cat > recovery.fstab << 'EOF'
         /boot          emmc    /dev/block/bootdevice/by-name/boo
         /recovery      emmc    /dev/block/bootdevice/by-name/recovery          flags=backup=1;display="Recovery";
@@ -108,7 +107,6 @@ jobs:
         data           ext4    /dev/block/bootdevice/by-name/userdata          length=-16384          flags=backup=1;display="Data";
         /storage       ext4    /data/media/0                                  flags=display="Internal Storage";usermrf;backup=1;storage;widemount;multiuser;
         EOF
-        
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         FOX_TARGET_DEVICES="${{ inputs.DEVICE_NAME }}"
