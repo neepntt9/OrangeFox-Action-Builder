@@ -92,22 +92,6 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
-        cat > recovery.fstab << 'EOF'
-        /boot          emmc    /dev/block/bootdevice/by-name/boo
-        /recovery      emmc    /dev/block/bootdevice/by-name/recovery          flags=backup=1;display="Recovery";
-        /system        ext4    /dev/block/bootdevice/by-name/system
-        /vendor        ext4    /dev/block/bootdevice/by-name/vendor
-        /product       ext4    /dev/block/bootdevice/by-name/product
-        /odm           ext4    /dev/block/bootdevice/by-name/odm
-        /system_ext    ext4    /dev/block/bootdevice/by-name/system_ext
-        /modem         ext4    /dev/block/bootdevice/by-name/modem             flags=backup=1;display="Modem";
-        /persist       ext4    /dev/block/bootdevice/by-name/persist
-        /efs           ext4    /dev/block/bootdevice/by-name/efs               flags=backup=1;display="EFS";
-        /cache         ext4    /dev/block/bootdevice/by-name/cache
-        data           ext4    /dev/block/bootdevice/by-name/userdata          length=-16384          flags=backup=1;display="Data";
-        /storage       ext4    /data/media/0                                  flags=display="Internal Storage";usermrf;backup=1;storage;widemount;multiuser;
-        EOF
-        source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         export OF_QUICK_BACKUP_LIST="/data;/storage;/boot;/system;/vendor;/persist;/efs;/cache;"
         export OF_QUICK_BACKUP_LIST_DEFAULT=1
@@ -140,6 +124,7 @@ jobs:
         export FOX_ENABLE_DRAGONTC=0
         export FOX_PARTITION_INFO=1
         export FOX_DISABLE_APP_MANAGER=0
+        source build/envsetup.sh
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
 
