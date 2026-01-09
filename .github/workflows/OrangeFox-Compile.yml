@@ -92,10 +92,9 @@ jobs:
       run: |
        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
        set +e
-
-       
-      FOX_INTERNAL_RELEASE := "R12.1"
-        FOX_MAINTAINER := "neeruzzfr@gmail.com"
+      
+       FOX_INTERNAL_RELEASE := "R12.1"
+       FOX_MAINTAINER := "neeruzzfr@gmail.com"
         FOX_DEVICE := "m14x"
         FOX_BUILD_VARIANT := "Official"
         FOX_MAINTAINER_PATCH_VERSION := 12
