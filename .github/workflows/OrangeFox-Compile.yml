@@ -95,7 +95,7 @@ jobs:
         
         source build/envsetup.sh
         
-        export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+      
         export FOX_PATCH_VBMETA_FLAG=1
         export OF_QUICK_BACKUP_LIST_DEFAULT=1
         export OF_PATCH_AVB20=1
