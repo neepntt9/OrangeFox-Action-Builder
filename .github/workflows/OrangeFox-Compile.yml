@@ -92,6 +92,7 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
         set +e
+        export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
         export OF_PATCH_AVB20=1
         export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
         export FOX_AB_DEVICE=0
