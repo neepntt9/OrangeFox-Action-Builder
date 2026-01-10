@@ -92,6 +92,7 @@ jobs:
       run: |
        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
        set +e
+
       
        source build/envsetup.sh
         set -e
