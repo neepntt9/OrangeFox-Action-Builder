@@ -96,13 +96,13 @@ jobs:
        set +e
 
        echo "starteddd"
-        export FOX_INTERNAL_RELEASE=R12.1 \
+        export FOX_INTERNAL_RELEASE=R10.1 \
         FOX_MAINTAINER=neeruzzfr@gmail.com \
         FOX_DEVICE=m14x \
         FOX_BUILD_VARIANT=Official \
-        FOX_MAINTAINER_PATCH_VERSION=12 \
+        FOX_MAINTAINER_PATCH_VERSION=10.1 \
         FOX_ANDROID_VERSION=12 \
-        FOX_RECOVERY_STANDARD=12th \
+        FOX_RECOVERY_STANDARD=10.1 \
         FOX_BUILD_DEBUG_MESSAGES=1 \
         FOX_NO_SAMSUNG_SPECIAL=0 \
         FOX_DYNAMIC_SAMSUNG_FIX=1 \
